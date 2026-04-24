@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Methodology | إعداد قيس جازي</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2563eb', 
+                        secondary: '#f8fafc',
+                        accent: '#e0e7ff',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Hide details marker */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary .fa-chevron-down { transform: rotate(180deg); }
+
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Radio buttons custom style */
+        input[type="radio"]:checked + label {
+            border-color: #2563eb;
+            background-color: #eff6ff;
+        }
+        
+        html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+    </style>
+</head>
+<body class="bg-secondary text-gray-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- Sticky Navbar -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-200 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo & Author -->
+                <div class="flex items-center gap-4">
+                    <div class="flex-shrink-0 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center text-xl shadow-lg shadow-primary/30">
+                            <i class="fa-solid fa-microscope"></i>
+                        </div>
+                        <div>
+                            <h1 class="font-bold text-lg md:text-xl leading-tight tracking-tight">Research Methodology</h1>
+                            <span class="text-xs text-primary font-arabic font-bold flex items-center gap-1">
+                                <i class="fa-solid fa-pen-nib"></i> إعداد: قيس جازي
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="flex items-center gap-3">
+                    <div class="hidden sm:block text-sm font-semibold text-gray-600">
+                        Reading Progress: <span id="progress-text">0/5</span>
+                    </div>
+                    <div class="w-24 md:w-32 h-2.5 bg-gray-200 rounded-full overflow-hidden">
+                        <div id="progress-bar" class="h-full bg-primary transition-all duration-500 ease-out" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 lg:pt-28 pb-12 flex flex-col lg:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="hidden lg:block w-64 flex-shrink-0">
+            <div class="sticky top-28 bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Course Modules</h3>
+                <ul class="space-y-2">
+                    <li><a href="#lesson-1" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary hover:bg-blue-50 transition-colors"><div class="w-6 h-6 rounded-md bg-gray-100 flex items-center justify-center text-xs"><i class="fa-solid fa-chart-pie"></i></div> Lesson 1: Variables</a></li>
+                    <li><a href="#lesson-2" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary hover:bg-blue-50 transition-colors"><div class="w-6 h-6 rounded-md bg-gray-100 flex items-center justify-center text-xs"><i class="fa-solid fa-lightbulb"></i></div> Lesson 2: Hypotheses</a></li>
+                    <li><a href="#lesson-3" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary hover:bg-blue-50 transition-colors"><div class="w-6 h-6 rounded-md bg-gray-100 flex items-center justify-center text-xs"><i class="fa-solid fa-book-open"></i></div> Lesson 3: Literature Review</a></li>
+                    <li><a href="#lesson-4" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary hover:bg-blue-50 transition-colors"><div class="w-6 h-6 rounded-md bg-gray-100 flex items-center justify-center text-xs"><i class="fa-solid fa-scale-balanced"></i></div> Lesson 4: Ethics</a></li>
+                    <li><a href="#lesson-5" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary hover:bg-blue-50 transition-colors"><div class="w-6 h-6 rounded-md bg-gray-100 flex items-center justify-center text-xs"><i class="fa-solid fa-users"></i></div> Lesson 5: Sampling</a></li>
+                    <li class="pt-2 mt-2 border-t border-gray-100"><a href="#final-quiz" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-indigo-600 hover:bg-indigo-50 transition-colors"><div class="w-6 h-6 rounded-md bg-indigo-100 flex items-center justify-center text-xs"><i class="fa-solid fa-list-check"></i></div> Final Quiz (30 Qs)</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 w-full max-w-4xl min-w-0" id="content-container">
+            
+            <!-- Welcome Banner -->
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl p-8 mb-10 text-white shadow-lg shadow-blue-900/20 animate-on-scroll">
+                <h2 class="text-3xl font-bold mb-3">Welcome to Research Methodology 🚀</h2>
+                <p class="text-blue-100 text-lg max-w-2xl leading-relaxed">Read through the 5 comprehensive lessons below. Once you are confident with the material, proceed to the bottom to take the 30-Question Final Assessment.</p>
+            </div>
+
+            <!-- EXPLANATIONS SECTION -->
+            
+            <!-- Lesson 1 -->
+            <section id="lesson-1" class="lesson-card bg-white rounded-3xl p-6 md:p-8 mb-8 shadow-sm border border-gray-100 animate-on-scroll">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="bg-blue-100 text-primary font-bold text-lg w-12 h-12 flex items-center justify-center rounded-2xl">1</span>
+                    <h2 class="text-2xl font-bold text-gray-800">Quantitative vs. Qualitative & Variables</h2>
+                </div>
+                <div class="prose max-w-none text-gray-600 space-y-4 mb-6">
+                    <p><strong>Quantitative Research:</strong> The process of collecting and analyzing numerical data. It finds patterns, tests relationships, and generalizes results.</p>
+                    <p><strong>Qualitative Research:</strong> Focuses on narrative (verbal) data to understand human experiences, qualities, and characteristics.</p>
+                    <h4 class="font-bold text-gray-800 mt-4">Understanding Variables:</h4>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Variable:</strong> A characteristic that varies from one person to another (e.g., Blood type, Weight).</li>
+                        <li><strong>Independent Variable (IV):</strong> The presumed cause. The researcher manipulates or observes this to see its effect.</li>
+                        <li><strong>Dependent Variable (DV):</strong> The presumed effect or outcome.</li>
+                    </ul>
+                    <div class="p-4 bg-blue-50 border-l-4 border-primary rounded-r-lg mt-4 text-sm">
+                        <strong class="text-gray-800">Example:</strong> In a study about "Smoking causing Lung Cancer", <em>Smoking</em> is the Independent Variable, and <em>Lung Cancer</em> is the Dependent Variable.
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-200 hover:bg-green-50 transition">
+                    <input type="checkbox" id="complete-1" class="lesson-checkbox w-5 h-5 text-green-600 rounded cursor-pointer">
+                    <label for="complete-1" class="font-medium text-gray-700 cursor-pointer select-none">Mark Lesson 1 as read</label>
+                </div>
+            </section>
+
+            <!-- Lesson 2 -->
+            <section id="lesson-2" class="lesson-card bg-white rounded-3xl p-6 md:p-8 mb-8 shadow-sm border border-gray-100 animate-on-scroll">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="bg-blue-100 text-primary font-bold text-lg w-12 h-12 flex items-center justify-center rounded-2xl">2</span>
+                    <h2 class="text-2xl font-bold text-gray-800">The Research Problem and Hypotheses</h2>
+                </div>
+                <div class="prose max-w-none text-gray-600 space-y-4 mb-6">
+                    <p><strong>Research Problem:</strong> A statement that addresses a gap in knowledge, a challenge, or a contradiction.</p>
+                    <h4 class="font-bold text-gray-800 mt-4">The PICOT Format:</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>P (Population/Patient):</strong> Who is being studied?</li>
+                        <li><strong>I (Intervention):</strong> What is the treatment or exposure?</li>
+                        <li><strong>C (Comparison):</strong> What is the alternative or control group?</li>
+                        <li><strong>O (Outcome):</strong> What is the expected result?</li>
+                        <li><strong>T (Time):</strong> What is the time frame?</li>
+                    </ul>
+                    <h4 class="font-bold text-gray-800 mt-4">Hypotheses Types:</h4>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Null Hypothesis (H0):</strong> Proposes there is NO relationship between variables.</li>
+                        <li><strong>Alternative Hypothesis (H1):</strong> States the independent variable DOES affect the dependent variable.</li>
+                        <li><strong>Directional Hypothesis:</strong> Predicts the specific direction of a relationship (e.g., "increases", "decreases").</li>
+                    </ul>
+                </div>
+                <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-200 hover:bg-green-50 transition">
+                    <input type="checkbox" id="complete-2" class="lesson-checkbox w-5 h-5 text-green-600 rounded cursor-pointer">
+                    <label for="complete-2" class="font-medium text-gray-700 cursor-pointer select-none">Mark Lesson 2 as read</label>
+                </div>
+            </section>
+
+            <!-- Lesson 3 -->
+            <section id="lesson-3" class="lesson-card bg-white rounded-3xl p-6 md:p-8 mb-8 shadow-sm border border-gray-100 animate-on-scroll">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="bg-blue-100 text-primary font-bold text-lg w-12 h-12 flex items-center justify-center rounded-2xl">3</span>
+                    <h2 class="text-2xl font-bold text-gray-800">Finding and Reviewing Literature</h2>
+                </div>
+                <div class="prose max-w-none text-gray-600 space-y-4 mb-6">
+                    <p><strong>Literature Review:</strong> A review of the critical points of current knowledge on a topic. It helps prevent duplicating existing work and identifies research gaps.</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Primary Sources:</strong> Original research reports written by the researchers who conducted the study.</li>
+                        <li><strong>Secondary Sources:</strong> Summaries or analyses of studies done by others.</li>
+                    </ul>
+                    <h4 class="font-bold text-gray-800 mt-4">Database Searching Tools (Boolean Operators):</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>AND:</strong> Narrows the search (requires BOTH terms to be present).</li>
+                        <li><strong>OR:</strong> Broadens the search (requires EITHER term to be present).</li>
+                    </ul>
+                    <p class="mt-2"><strong>CINAHL & MEDLINE:</strong> Major databases for finding nursing, medical, and allied health literature.</p>
+                </div>
+                <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-200 hover:bg-green-50 transition">
+                    <input type="checkbox" id="complete-3" class="lesson-checkbox w-5 h-5 text-green-600 rounded cursor-pointer">
+                    <label for="complete-3" class="font-medium text-gray-700 cursor-pointer select-none">Mark Lesson 3 as read</label>
+                </div>
+            </section>
+
+            <!-- Lesson 4 -->
+            <section id="lesson-4" class="lesson-card bg-white rounded-3xl p-6 md:p-8 mb-8 shadow-sm border border-gray-100 animate-on-scroll">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="bg-blue-100 text-primary font-bold text-lg w-12 h-12 flex items-center justify-center rounded-2xl">4</span>
+                    <h2 class="text-2xl font-bold text-gray-800">Ethics in Research</h2>
+                </div>
+                <div class="prose max-w-none text-gray-600 space-y-4 mb-6">
+                    <p>Research must be conducted ethically to protect participants' rights.</p>
+                    <h4 class="font-bold text-gray-800 mt-4">Core Ethical Principles:</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>Beneficence:</strong> Duty to do good.</li>
+                        <li><strong>Nonmaleficence:</strong> Duty to do no harm.</li>
+                        <li><strong>Autonomy:</strong> Respecting personal freedom and the right to choose.</li>
+                        <li><strong>Informed Consent:</strong> Educating a patient/participant about risks and benefits before they participate.</li>
+                    </ul>
+                    <h4 class="font-bold text-gray-800 mt-4">Research Misconduct:</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>Fabrication:</strong> Making up data or results.</li>
+                        <li><strong>Falsification:</strong> Manipulating equipment or changing data.</li>
+                        <li><strong>Plagiarism:</strong> Using someone else's ideas or words without giving them credit.</li>
+                    </ul>
+                </div>
+                <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-200 hover:bg-green-50 transition">
+                    <input type="checkbox" id="complete-4" class="lesson-checkbox w-5 h-5 text-green-600 rounded cursor-pointer">
+                    <label for="complete-4" class="font-medium text-gray-700 cursor-pointer select-none">Mark Lesson 4 as read</label>
+                </div>
+            </section>
+
+            <!-- Lesson 5 -->
+            <section id="lesson-5" class="lesson-card bg-white rounded-3xl p-6 md:p-8 mb-12 shadow-sm border border-gray-100 animate-on-scroll">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="bg-blue-100 text-primary font-bold text-lg w-12 h-12 flex items-center justify-center rounded-2xl">5</span>
+                    <h2 class="text-2xl font-bold text-gray-800">Sampling Methods</h2>
+                </div>
+                <div class="prose max-w-none text-gray-600 space-y-4 mb-6">
+                    <p><strong>Population:</strong> The complete set of people with a common characteristic.</p>
+                    <p><strong>Sample:</strong> A selected portion of the population used to represent the entire group.</p>
+                    <h4 class="font-bold text-gray-800 mt-4">Types of Sampling:</h4>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Probability Sampling:</strong> Involves <em>random</em> selection. Allows strong statistical inferences. Examples: Simple random sampling, systematic, stratified, cluster.</li>
+                        <li><strong>Non-probability Sampling:</strong> Involves <em>non-random</em> selection based on convenience. Easier but has higher bias risk. Examples: Convenience sampling, voluntary response, purposive, snowball sampling.</li>
+                    </ul>
+                    <div class="p-4 bg-blue-50 border-l-4 border-primary rounded-r-lg mt-4 text-sm">
+                        <strong class="text-gray-800">Note:</strong> <em>Snowball sampling</em> is used when a population is hard to reach; researchers recruit participants via other participants.
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-200 hover:bg-green-50 transition">
+                    <input type="checkbox" id="complete-5" class="lesson-checkbox w-5 h-5 text-green-600 rounded cursor-pointer">
+                    <label for="complete-5" class="font-medium text-gray-700 cursor-pointer select-none">Mark Lesson 5 as read</label>
+                </div>
+            </section>
+
+            <hr class="my-12 border-gray-200">
+
+            <!-- QUIZ SECTION -->
+            <section id="final-quiz" class="bg-indigo-50 border border-indigo-100 rounded-3xl p-6 md:p-8 mb-8 shadow-sm">
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-600 text-white text-2xl mb-4 shadow-lg shadow-indigo-600/30">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-2">Final Assessment</h2>
+                    <p class="text-gray-600">Test your knowledge with these 30 multiple-choice questions covering all 5 lessons.</p>
+                </div>
+
+                <!-- Quiz Container dynamically filled by JS -->
+                <div id="quiz-questions-container" class="space-y-6">
+                    <!-- JS will inject questions here -->
+                </div>
+
+                <div class="mt-10 text-center">
+                    <button onclick="submitFinalQuiz()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl text-lg font-bold transition shadow-lg w-full md:w-auto">Submit Assessment</button>
+                    <div id="final-quiz-feedback" class="mt-6 text-xl font-bold hidden p-6 rounded-2xl"></div>
+                </div>
+            </section>
+            
+            <!-- Footer -->
+            <footer class="mt-12 text-center text-gray-500 text-sm animate-on-scroll pb-10">
+                <p>Interactive educational content designed for Research Methodology.</p>
+                <p class="mt-2 font-arabic font-bold text-gray-600 flex justify-center items-center gap-2">
+                    <i class="fa-solid fa-code text-primary"></i> إعداد: قيس جازي &copy; 2026
+                </p>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- JavaScript Actions -->
+    <script>
+        // 1. Progress Tracking
+        const checkboxes = document.querySelectorAll('.lesson-checkbox');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        
+        function updateProgress() {
+            const total = checkboxes.length;
+            const checked = document.querySelectorAll('.lesson-checkbox:checked').length;
+            const percentage = (checked / total) * 100;
+            
+            progressBar.style.width = `${percentage}%`;
+            progressText.innerText = `${checked}/${total}`;
+            
+            if(percentage === 100) {
+                progressBar.classList.remove('bg-primary');
+                progressBar.classList.add('bg-green-500');
+            } else {
+                progressBar.classList.add('bg-primary');
+                progressBar.classList.remove('bg-green-500');
+            }
+        }
+
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', updateProgress);
+        });
+
+        // 2. Generate 30 Questions
+        const quizData = [
+            // Lesson 1 (1-6)
+            { q: "What type of research relies on numerical data to discover patterns?", opts: ["Qualitative Research", "Quantitative Research", "Historical Research", "Narrative Research"], ans: 1 },
+            { q: "What type of research collects verbal or narrative data?", opts: ["Quantitative Research", "Qualitative Research", "Statistical Research", "Experimental Research"], ans: 1 },
+            { q: "A characteristic that takes on different values from person to person is called a:", opts: ["Variable", "Constant", "Hypothesis", "Sample"], ans: 0 },
+            { q: "The variable that is considered the 'presumed cause' is the:", opts: ["Dependent Variable", "Extraneous Variable", "Independent Variable", "Confounding Variable"], ans: 2 },
+            { q: "The variable that is considered the 'presumed effect or outcome' is the:", opts: ["Independent Variable", "Dependent Variable", "Control Variable", "Random Variable"], ans: 1 },
+            { q: "In a study on 'The effect of smoking on lung cancer', smoking is the:", opts: ["Dependent Variable", "Independent Variable", "Null Variable", "Constant"], ans: 1 },
+            // Lesson 2 (7-12)
+            { q: "A statement that addresses a gap in knowledge or a challenge is a:", opts: ["Hypothesis", "Research Problem", "Literature Review", "Sampling Plan"], ans: 1 },
+            { q: "In the PICOT format, what does the 'P' stand for?", opts: ["Problem", "Process", "Population/Patient", "Protocol"], ans: 2 },
+            { q: "In the PICOT format, what does the 'I' stand for?", opts: ["Intervention", "Idea", "Investigation", "Interpretation"], ans: 0 },
+            { q: "In the PICOT format, what does the 'O' stand for?", opts: ["Observation", "Outcome", "Organization", "Object"], ans: 1 },
+            { q: "Which hypothesis proposes that there is NO relationship between variables?", opts: ["Alternative Hypothesis", "Directional Hypothesis", "Null Hypothesis", "Complex Hypothesis"], ans: 2 },
+            { q: "Which hypothesis explicitly states that the independent variable DOES affect the dependent variable?", opts: ["Null Hypothesis", "Alternative Hypothesis", "Zero Hypothesis", "Void Hypothesis"], ans: 1 },
+            // Lesson 3 (13-18)
+            { q: "What is an original research report written by the person who conducted the study?", opts: ["Primary Source", "Secondary Source", "Tertiary Source", "Review Article"], ans: 0 },
+            { q: "A document that summarizes or reviews studies done by others is a:", opts: ["Primary Source", "Secondary Source", "Raw Data", "Methodology Report"], ans: 1 },
+            { q: "Which Boolean operator is used to BROADEN a search?", opts: ["AND", "NOT", "OR", "EXCEPT"], ans: 2 },
+            { q: "Which Boolean operator is used to NARROW a search by requiring both terms?", opts: ["AND", "OR", "EITHER", "NOR"], ans: 0 },
+            { q: "What is a main purpose of a literature review?", opts: ["To collect raw data", "To identify research gaps and prevent duplication", "To calculate statistics", "To recruit participants"], ans: 1 },
+            { q: "What is CINAHL?", opts: ["A research sampling method", "A database for nursing and allied health literature", "An ethical board", "A type of hypothesis"], ans: 1 },
+            // Lesson 4 (19-24)
+            { q: "The ethical principle of 'doing no harm' is called:", opts: ["Beneficence", "Autonomy", "Nonmaleficence", "Justice"], ans: 2 },
+            { q: "The ethical principle of 'doing good for others' is called:", opts: ["Nonmaleficence", "Beneficence", "Fidelity", "Veracity"], ans: 1 },
+            { q: "The ethical principle that respects personal freedom and the right to choose is:", opts: ["Justice", "Autonomy", "Nonmaleficence", "Beneficence"], ans: 1 },
+            { q: "Educating a patient about risks and benefits before they agree to participate is called:", opts: ["Plagiarism", "Informed Consent", "Fabrication", "Data Sharing"], ans: 1 },
+            { q: "Making up data or results that do not exist is known as:", opts: ["Plagiarism", "Falsification", "Fabrication", "Validation"], ans: 2 },
+            { q: "Using someone else's ideas or words without giving them credit is known as:", opts: ["Fabrication", "Plagiarism", "Falsification", "Anonymity"], ans: 1 },
+            // Lesson 5 (25-30)
+            { q: "The complete set of people with a common characteristic is the:", opts: ["Sample", "Population", "Variable", "Cohort"], ans: 1 },
+            { q: "A selected portion of the population used to represent the entire group is a:", opts: ["Sample", "Strata", "Cluster", "Frame"], ans: 0 },
+            { q: "Which type of sampling involves random selection?", opts: ["Non-probability Sampling", "Probability Sampling", "Convenience Sampling", "Purposive Sampling"], ans: 1 },
+            { q: "Which type of sampling is non-random and based on convenience?", opts: ["Probability Sampling", "Non-probability Sampling", "Simple Random Sampling", "Systematic Sampling"], ans: 1 },
+            { q: "Recruiting participants via other participants (useful for hard-to-reach populations) is called:", opts: ["Cluster Sampling", "Snowball Sampling", "Stratified Sampling", "Random Sampling"], ans: 1 },
+            { q: "Why is probability sampling generally preferred in quantitative research?", opts: ["It is cheaper", "It requires no planning", "It allows strong statistical inferences and reduces bias", "It is easier to find participants"], ans: 2 }
+        ];
+
+        const quizContainer = document.getElementById('quiz-questions-container');
+        
+        quizData.forEach((item, index) => {
+            const qNum = index + 1;
+            let optionsHTML = '';
+            
+            item.opts.forEach((opt, optIndex) => {
+                optionsHTML += `
+                    <label class="flex items-center gap-3 p-3 md:p-4 bg-white border border-gray-200 rounded-xl cursor-pointer hover:bg-indigo-50 hover:border-indigo-200 transition">
+                        <input type="radio" name="q${qNum}" value="${optIndex}" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                        <span class="text-sm md:text-base text-gray-700">${opt}</span>
+                    </label>
+                `;
+            });
+
+            const qHTML = `
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <p class="font-bold text-gray-800 mb-4 flex gap-2">
+                        <span class="text-indigo-600">${qNum}.</span> ${item.q}
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        ${optionsHTML}
+                    </div>
+                </div>
+            `;
+            quizContainer.innerHTML += qHTML;
+        });
+
+        // 3. Submit 30-Question Quiz Logic
+        function submitFinalQuiz() {
+            let score = 0;
+            let answered = 0;
+
+            quizData.forEach((item, index) => {
+                const qNum = index + 1;
+                const selected = document.querySelector(`input[name="q${qNum}"]:checked`);
+                
+                // Highlight logic (Optional UX enhancement)
+                const parentDiv = document.querySelector(`input[name="q${qNum}"]`).closest('.bg-white');
+                
+                if (selected) {
+                    answered++;
+                    if (parseInt(selected.value) === item.ans) {
+                        score++;
+                        parentDiv.classList.add('border-green-300', 'bg-green-50/30');
+                        parentDiv.classList.remove('border-red-300', 'bg-red-50/30', 'border-gray-100');
+                    } else {
+                        parentDiv.classList.add('border-red-300', 'bg-red-50/30');
+                        parentDiv.classList.remove('border-green-300', 'bg-green-50/30', 'border-gray-100');
+                    }
+                }
+            });
+
+            const feedback = document.getElementById('final-quiz-feedback');
+            feedback.classList.remove('hidden');
+
+            if (answered < 30) {
+                feedback.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> You have only answered ${answered} out of 30 questions. Please complete all questions.`;
+                feedback.className = "mt-6 text-lg md:text-xl font-bold block p-6 rounded-2xl bg-orange-100 text-orange-800 border border-orange-200";
+                return;
+            }
+
+            const percentage = Math.round((score / 30) * 100);
+            if (score >= 25) {
+                feedback.innerHTML = `<i class="fa-solid fa-trophy text-yellow-500 text-2xl mb-2"></i><br>Excellent Work!<br>You scored ${score}/30 (${percentage}%).`;
+                feedback.className = "mt-6 text-lg md:text-xl font-bold block p-6 rounded-2xl bg-green-100 text-green-800 border border-green-200";
+            } else if (score >= 15) {
+                feedback.innerHTML = `<i class="fa-solid fa-thumbs-up text-blue-500 text-2xl mb-2"></i><br>Good Effort!<br>You scored ${score}/30 (${percentage}%). Review the lessons to improve.`;
+                feedback.className = "mt-6 text-lg md:text-xl font-bold block p-6 rounded-2xl bg-blue-100 text-blue-800 border border-blue-200";
+            } else {
+                feedback.innerHTML = `<i class="fa-solid fa-book text-red-500 text-2xl mb-2"></i><br>Keep Studying!<br>You scored ${score}/30 (${percentage}%). Please re-read the material carefully.`;
+                feedback.className = "mt-6 text-lg md:text-xl font-bold block p-6 rounded-2xl bg-red-100 text-red-800 border border-red-200";
+            }
+        }
+
+        // 4. Scroll Animations (Intersection Observer)
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach((elem) => {
+            observer.observe(elem);
+        });
+
+        // 5. Active Sidebar Links
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.sidebar-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary', 'bg-blue-50', 'text-indigo-600', 'bg-indigo-50');
+                if (link.getAttribute('href').includes(current)) {
+                    if(current === 'final-quiz') {
+                        link.classList.add('text-indigo-600', 'bg-indigo-50');
+                    } else {
+                        link.classList.add('text-primary', 'bg-blue-50');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
